@@ -1,22 +1,26 @@
 let rn;
 function digit4() {
-    rn = Math.round(Math.random() * 9999);
-    if (rn / 1000 >= 1) {
-        console.log(rn);
+    rn = Math.ceil(Math.random() * 9999);
+    // rn > 0 ? 
+    if (rn > 0) {
+        if (rn / 1000 >= 1 && rn/1000 <= 9.999) {
+            console.log(rn);
+            return rn;
+        }
+    }
+    else {
         return rn;
-    } else {
-        return digit4();
+        digit4();
     }
 }
 // digit4();
 let GeneratedPinValue, digitsValue;
 function GeneratePin() {
     GeneratedPin = document.getElementById("GeneratedPin");
-    //   GeneratedPin.value = "";
+    // GeneratedPin.value = 0;
     GeneratedPin.value = digit4();
-    //   console.log(GeneratePin.value);
-    GeneratedPinValue = GeneratedPin;
-    //   console.log(GeneratedPinValue);
+    GeneratedPinValue = GeneratedPin.value;
+    // console.log("GeneratedPinValue : "+GeneratedPinValue);
 }
 
 // let digitBtn = document.getElementsByClassName("button");
@@ -33,6 +37,6 @@ function digitInput(digit) {
 function matchBtn() {
     if (GeneratedPinValue === digitsValue) {
         console.log("Match");
-        document.getElementById("ok").style.display = "block";
+        document.getElementById("ok").style.display = "block"
     }
 }
